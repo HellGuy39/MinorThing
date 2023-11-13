@@ -3,6 +3,7 @@ package com.hellguy39.minor_thing.data.di
 import com.hellguy39.minor_thing.data.AuthRepositoryImpl
 import com.hellguy39.minor_thing.data.TimetableRepositoryImpl
 import com.hellguy39.minor_thing.domain.AuthRepository
+import com.hellguy39.minor_thing.domain.TimetableRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -20,6 +21,6 @@ interface DataModule {
     @Binds
     fun bindTimetableRepository(
         timetableRepositoryImpl: TimetableRepositoryImpl
-    ): TimetableRepositoryImpl
+    ): TimetableRepository
 
 }
