@@ -20,6 +20,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,9 +40,13 @@ import com.hellguy39.minor_thing.ui.values.Spaces
 fun TimetableScreen(
     navigateToEdit: (id: Int) -> Unit,
     navigateToLogin: () -> Unit,
-    viewModel: TimetableViewModel = hiltViewModel()
+    timetableViewModel: TimetableViewModel = hiltViewModel()
 ) {
-    val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+    val uiState by timetableViewModel.uiState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(key1 = Unit) {
+        timetableViewModel.loadData()
+    }
 
     Scaffold(
         topBar = {
@@ -54,7 +59,7 @@ fun TimetableScreen(
                 actions = {
                     IconButton(
                         onClick = {
-                            viewModel.logout()
+                            timetableViewModel.logout()
                             navigateToLogin()
                         }
                     ) {
