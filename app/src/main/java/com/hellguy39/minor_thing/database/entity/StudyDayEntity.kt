@@ -8,13 +8,10 @@ data class StudyDayEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val createdAt: Long,
     val updatedAt: Long,
-    val dayName: String,
-    val placeName: String,
-    val teacherName: String,
-    val schedule: Map<String, String>
+    val date: Long,
+    val schedule: List<String>
 ) {
     companion object {
         const val TABLE_NAME = "study_day"
     }
 }
-

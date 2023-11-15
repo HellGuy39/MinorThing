@@ -55,8 +55,7 @@ fun LoginScreen(
         modifier = Modifier.fillMaxSize()
     ) { innerPadding ->
         Column(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
                 .padding(top = innerPadding.calculateTopPadding())
                 .padding(horizontal = Spaces.extraLarge, vertical = Spaces.extraLarge)
                 .imePadding()
@@ -65,6 +64,11 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.weight(1f))
+            Icon(
+                modifier = Modifier.size(64.dp),
+                painter = painterResource(id = R.drawable.baseline_login_24),
+                contentDescription = null
+            )
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = uiState.login,

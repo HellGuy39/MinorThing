@@ -8,9 +8,7 @@ fun StudyDayEntity.toStudyDay(): StudyDay {
         id = id,
         createdAt = createdAt,
         updatedAt = updatedAt,
-        dayName = dayName,
-        placeName = placeName,
-        teacherName = teacherName,
+        date = date,
         schedule = schedule,
     )
 }
@@ -20,9 +18,7 @@ fun StudyDay.toStudyDayEntity(): StudyDayEntity {
         id = id,
         createdAt = createdAt,
         updatedAt = updatedAt,
-        dayName = dayName,
-        placeName = placeName,
-        teacherName = teacherName,
+        date = date,
         schedule = schedule,
     )
 }

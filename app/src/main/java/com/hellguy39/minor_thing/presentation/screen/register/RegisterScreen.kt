@@ -86,6 +86,11 @@ fun RegisterScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.weight(1f))
+            Icon(
+                modifier = Modifier.size(64.dp),
+                painter = painterResource(id = R.drawable.baseline_app_registration_24),
+                contentDescription = null
+            )
             Column(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(Spaces.small)

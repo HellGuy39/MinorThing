@@ -8,7 +8,7 @@ data class UserEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val login: String,
     val password: String,
-    val accountType: String
+    val accountTag: String
 ) {
     companion object {
         const val TABLE_NAME = "user"

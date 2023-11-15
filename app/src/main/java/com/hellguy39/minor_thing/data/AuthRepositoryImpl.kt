@@ -9,6 +9,8 @@ import com.hellguy39.minor_thing.model.RegisterParams
 import com.hellguy39.minor_thing.model.User
 import com.hellguy39.minor_thing.prefs.SharedPreferencesLocalStorage
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class AuthRepositoryImpl
@@ -23,6 +25,11 @@ constructor(
         return userDao.findById(localStorage.authenticatedUserid)?.toUser()
     }
 
+    override fun getCurrentUserFlow(): Flow<User?> {
+        return userDao.findByIdFlow(localStorage.authenticatedUserid)
+            .map { it?.toUser() }
+    }
+
     override suspend fun register(registerParams: RegisterParams): Boolean {
         delay(3000)
 
@@ -31,7 +38,7 @@ constructor(
         val userEntity = UserEntity(
             login = registerParams.login,
             password = registerParams.password,
-            accountType = registerParams.accountType.toString()
+            accountTag = registerParams.accountType.toString()
         )
         val id = userDao.insert(userEntity).toInt()
         localStorage.authenticatedUserid = id

@@ -21,6 +21,9 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE id LIKE :id LIMIT 1")
     suspend fun findById(id: Int): UserEntity?
 
+    @Query("SELECT * FROM user WHERE id LIKE :id LIMIT 1")
+    fun findByIdFlow(id: Int): Flow<UserEntity?>
+
     @Query("SELECT * FROM user WHERE login LIKE :login LIMIT 1")
     suspend fun findByLogin(login: String): UserEntity?
 

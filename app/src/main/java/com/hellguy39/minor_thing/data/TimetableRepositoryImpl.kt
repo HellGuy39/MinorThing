@@ -10,11 +10,16 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
+
 class TimetableRepositoryImpl
 @Inject
 constructor(
     private val timetableDao: TimetableDao
 ): TimetableRepository {
+
+    override suspend fun getStudyDayById(id: Int): StudyDay? {
+        return timetableDao.findById(id)?.toStudyDay()
+    }
 
     override suspend fun getStudyDays(): List<StudyDay> {
         return timetableDao.getAll()
@@ -23,7 +28,11 @@ constructor(
 
     override fun getStudyDaysFlow(): Flow<List<StudyDay>> {
         return timetableDao.getAllFlow()
-            .map { list -> list.map { it.toStudyDay() } }
+            .map { list ->
+                list.map { studyDayEntity -> studyDayEntity.toStudyDay() }
+                    .sortedBy { it.date }
+            }
+
     }
 
     override suspend fun createStudyDay(studyDay: StudyDay) {
@@ -36,5 +45,9 @@ constructor(
 
     override suspend fun deleteStudyDay(studyDay: StudyDay) {
         timetableDao.delete(studyDay.toStudyDayEntity())
+    }
+
+    override suspend fun deleteStudyDayById(id: Int) {
+        timetableDao.deleteById(id)
     }
 }

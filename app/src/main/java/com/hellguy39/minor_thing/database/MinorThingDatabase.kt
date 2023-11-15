@@ -8,6 +8,7 @@ import com.hellguy39.minor_thing.database.dao.UserDao
 import com.hellguy39.minor_thing.database.dao.TimetableDao
 import com.hellguy39.minor_thing.database.entity.StudyDayEntity
 import com.hellguy39.minor_thing.database.entity.UserEntity
+import com.hellguy39.minor_thing.database.type_converter.ListOfStringsConverter
 import com.hellguy39.minor_thing.database.type_converter.MapOfStringsConverter
 
 @Database(
@@ -17,7 +18,7 @@ import com.hellguy39.minor_thing.database.type_converter.MapOfStringsConverter
         StudyDayEntity::class
     ]
 )
-@TypeConverters(MapOfStringsConverter::class)
+@TypeConverters(MapOfStringsConverter::class, ListOfStringsConverter::class)
 abstract class MinorThingDatabase: RoomDatabase() {
 
     abstract val timetableDao: TimetableDao

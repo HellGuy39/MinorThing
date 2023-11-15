@@ -4,8 +4,6 @@ data class StudyDay(
     val id: Int,
     val createdAt: Long,
     val updatedAt: Long,
-    val dayName: String,
-    val placeName: String,
-    val teacherName: String,
-    val schedule: Map<String, String>
+    val date: Long,
+    val schedule: List<String>
 )

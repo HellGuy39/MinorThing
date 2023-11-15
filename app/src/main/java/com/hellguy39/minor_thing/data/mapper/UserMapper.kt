@@ -9,6 +9,6 @@ fun UserEntity.toUser(): User {
         id = id,
         login = login,
         password = password,
-        accountType = AccountType.fromString(accountType),
+        accountType = AccountType.fromString(accountTag),
     )
 }

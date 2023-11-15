@@ -39,4 +39,7 @@ interface TimetableDao {
     @Delete
     suspend fun deleteAll(vararg studyDayEntities: StudyDayEntity)
 
+    @Query("DELETE FROM study_day WHERE id LIKE :id")
+    suspend fun deleteById(id: Int)
+
 }
