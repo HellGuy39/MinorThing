@@ -39,7 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hellguy39.minor_thing.R
-import com.hellguy39.minor_thing.model.AccountType
+import com.hellguy39.minor_thing.model.UserRole
 import com.hellguy39.minor_thing.ui.values.Spaces
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -102,14 +102,14 @@ fun RegisterScreen(
                 ) {
                     FilterChip(
                         modifier = Modifier.height(FilterChipDefaults.Height).weight(1f),
-                        selected = uiState.accountType == AccountType.Student,
-                        onClick = { registerViewModel.editAccountType(AccountType.Student) },
+                        selected = uiState.userRole == UserRole.Student,
+                        onClick = { registerViewModel.editAccountType(UserRole.Student) },
                         label = { Text(text = "Student") }
                     )
                     FilterChip(
                         modifier = Modifier.height(FilterChipDefaults.Height).weight(1f),
-                        selected = uiState.accountType == AccountType.Teacher,
-                        onClick = { registerViewModel.editAccountType(AccountType.Teacher) },
+                        selected = uiState.userRole == UserRole.Teacher,
+                        onClick = { registerViewModel.editAccountType(UserRole.Teacher) },
                         label = { Text(text = "Teacher") }
                     )
                 }

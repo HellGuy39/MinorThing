@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hellguy39.minor_thing.R
-import com.hellguy39.minor_thing.model.AccountType
+import com.hellguy39.minor_thing.model.UserRole
 import com.hellguy39.minor_thing.presentation.navigation.ARG_ID_EMPTY
 import com.hellguy39.minor_thing.ui.util.calculateScheduledSubjectTime
 import com.hellguy39.minor_thing.ui.util.millisToDisplayableDate
@@ -67,7 +67,7 @@ fun TimetableScreen(
             )
         },
         floatingActionButton = {
-            if (uiState.currentUser?.accountType is AccountType.Teacher) {
+            if (uiState.currentUser?.userRole is UserRole.Teacher) {
                 FloatingActionButton(onClick = { navigateToEdit(ARG_ID_EMPTY) }) {
                     Icon(
                         painter = painterResource(id = R.drawable.baseline_add_24),

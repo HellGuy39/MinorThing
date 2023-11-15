@@ -3,7 +3,7 @@ package com.hellguy39.minor_thing.presentation.screen.register
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hellguy39.minor_thing.domain.AuthRepository
-import com.hellguy39.minor_thing.model.AccountType
+import com.hellguy39.minor_thing.model.UserRole
 import com.hellguy39.minor_thing.model.RegisterParams
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -30,7 +30,7 @@ constructor(
             val params = RegisterParams(
                 login = _uiState.value.login,
                 password = _uiState.value.password,
-                accountType = _uiState.value.accountType
+                userRole = _uiState.value.userRole
             )
             val isAuthenticated = authRepository.register(params)
             _uiState.update { state -> state.copy(isAuthenticated = isAuthenticated) }
@@ -46,8 +46,8 @@ constructor(
         _uiState.update { state -> state.copy(password = password) }
     }
 
-    fun editAccountType(accountType: AccountType) {
-        _uiState.update { state -> state.copy(accountType = accountType) }
+    fun editAccountType(userRole: UserRole) {
+        _uiState.update { state -> state.copy(userRole = userRole) }
     }
 
     private fun toggleLoading() {
@@ -60,5 +60,5 @@ data class RegisterUiState(
     val isLoading: Boolean = false,
     val login: String = "",
     val password: String = "",
-    val accountType: AccountType = AccountType.Student
+    val userRole: UserRole = UserRole.Student
 )

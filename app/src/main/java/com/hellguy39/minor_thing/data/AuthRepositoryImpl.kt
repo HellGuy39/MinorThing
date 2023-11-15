@@ -31,14 +31,14 @@ constructor(
     }
 
     override suspend fun register(registerParams: RegisterParams): Boolean {
-        delay(3000)
+        delay(FAKE_DELAY)
 
         if (userDao.findByLogin(registerParams.login) != null) return false
 
         val userEntity = UserEntity(
             login = registerParams.login,
             password = registerParams.password,
-            accountTag = registerParams.accountType.toString()
+            userRoleTag = registerParams.userRole.toString()
         )
         val id = userDao.insert(userEntity).toInt()
         localStorage.authenticatedUserid = id
@@ -46,7 +46,7 @@ constructor(
     }
 
     override suspend fun login(loginParams: LoginParams): Boolean {
-        delay(3000)
+        delay(FAKE_DELAY)
 
         val fundedUserEntity = userDao.findByLogin(loginParams.login) ?: return false
 
@@ -64,5 +64,9 @@ constructor(
 
     override suspend fun logout() {
         localStorage.authenticatedUserid = SharedPreferencesLocalStorage.DefaultValues.emptyUserId
+    }
+
+    companion object {
+        private const val FAKE_DELAY = 3_000L
     }
 }

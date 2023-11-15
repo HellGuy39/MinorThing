@@ -1,12 +1,12 @@
 package com.hellguy39.minor_thing.model
 
-sealed class AccountType {
+sealed class UserRole {
 
-    data object Student: AccountType()
+    data object Student: UserRole()
 
-    data object Teacher: AccountType()
+    data object Teacher: UserRole()
 
-    data object None: AccountType()
+    data object None: UserRole()
 
     override fun toString(): String {
         return when(this) {
@@ -22,7 +22,7 @@ sealed class AccountType {
         private const val STUDENT_TAG = "Student"
         private const val TEACHER_TAG = "Teacher"
 
-        fun fromString(s: String): AccountType {
+        fun fromString(s: String): UserRole {
             return when(s) {
                 STUDENT_TAG -> Student
                 TEACHER_TAG -> Teacher

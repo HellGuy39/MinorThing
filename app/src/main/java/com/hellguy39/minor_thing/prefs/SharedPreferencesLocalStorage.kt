@@ -15,8 +15,6 @@ constructor(
         context.getSharedPreferences(STORAGE_NAME, Context.MODE_PRIVATE)
     }
 
-    private val storageEditor by lazy { storage.edit() }
-
     private fun edit(block: SharedPreferences.Editor.() -> Unit) {
         with(storage.edit()) {
             block.invoke(this)
